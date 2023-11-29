@@ -1,6 +1,7 @@
 using System.Reflection.Metadata.Ecma335;
 using backend.Db;
 using backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers;
@@ -62,6 +63,7 @@ public class ProductsController : Controller
         return Ok(product);
     }
 
+    [Authorize]
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateProductById(Product product)
     {
@@ -78,6 +80,7 @@ public class ProductsController : Controller
         return Ok(product);
     }
 
+    [Authorize]
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteProductById(string id)
     {
@@ -90,6 +93,7 @@ public class ProductsController : Controller
         return Ok(true);
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> CreateProduct([FromBody] Product product)
     {
